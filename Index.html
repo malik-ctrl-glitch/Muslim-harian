@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Keseharian Seorang Muslim | Edukasi Islami</title>
+    <!-- Google Fonts: Poppins modern & clean -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 (free icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background: #f8fbf5;
+            color: #1a2e1f;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        /* Animasi fade-in saat load */
+        .fade-in {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Warna tema: hijau utama, putih, aksen emas */
+        :root {
+            --primary-green: #1f6e43;
+            --light-green: #e2f0e8;
+            --gold: #d4af37;
+            --gold-soft: #f9eec1;
+            --white: #ffffff;
+            --dark-text: #1f2e1c;
+            --gray-light: #f0f4ef;
+            --shadow-sm: 0 8px 20px rgba(0, 0, 0, 0.03), 0 2px 6px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 12px 28px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Navbar */
+        nav {
+            background: var(--white);
+            backdrop-filter: blur(0px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 0.9rem 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--gold);
+        }
+
+        .logo h2 {
+            color: var(--primary-green);
+            font-weight: 700;
+            font-size: 1.4rem;
+        }
+        .logo span {
+            color: var(--gold);
+            font-size: 1.3rem;
+        }
+        .nav-links {
+            display: flex;
+            gap: 1.8rem;
+            flex-wrap: wrap;
+            list-style: none;
+        }
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 600;
+            color: #2c4b2c;
+            transition: 0.2s;
+            font-size: 1rem;
+        }
+        .nav-links a:hover {
+            color: var(--gold);
+            transform: translateY(-2px);
+        }
+
+        /* Tombol umum */
+        .btn-gold {
+            background: var(--gold);
+            border: none;
+            padding: 8px 18px;
+            border-radius: 40px;
+            font-weight: 600;
+            color: #1f3b1a;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        }
+        .btn-gold:hover {
+            background: #c4a22b;
+            transform: scale(1.02);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 2rem 1.8rem;
+        }
+        section {
+            margin-bottom: 3rem;
+            background: var(--white);
+            border-radius: 36px;
+            padding: 2rem 1.8rem;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.2s;
+        }
+        .section-title {
+            font-size: 1.9rem;
+            font-weight: 700;
+            border-left: 6px solid var(--gold);
+            padding-left: 1rem;
+            margin-bottom: 1.8rem;
+            color: var(--primary-green);
+        }
+
+        /* Hero / Beranda */
+        .hero {
+            background: linear-gradient(135deg, #fefce8 0%, #eef6e9 100%);
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+        .hero-text {
+            flex: 1.2;
+        }
+        .hero-text h1 {
+            font-size: 2.8rem;
+            color: var(--primary-green);
+            margin-bottom: 1rem;
+        }
+        .hero-text p {
+            font-size: 1.1rem;
+            line-height: 1.5;
+            color: #2b4427;
+            margin-bottom: 1.6rem;
+        }
+        .hero-illustration {
+            flex: 0.8;
+            text-align: center;
+        }
+        .hero-illustration i {
+            font-size: 10rem;
+            color: var(--gold);
+            filter: drop-shadow(4px 8px 12px rgba(0,0,0,0.1));
+        }
+        .nav-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .nav-btn {
+            background: var(--primary-green);
+            color: white;
+            padding: 0.7rem 1.3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .nav-btn i { font-size: 0.9rem; }
+        .nav-btn:hover {
+            background: #0f5436;
+            transform: translateY(-3px);
+        }
+
+        /* Kartu Doa dan Adab */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.6rem;
+        }
+        .card {
+            background: var(--white);
+            border-radius: 28px;
+            padding: 1.4rem;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.2s ease;
+            border: 1px solid #e9f0e4;
+        }
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--gold);
+        }
+        .arabic {
+            font-size: 1.6rem;
+            font-weight: 600;
+            font-family: 'Amiri', 'Times New Roman', serif;
+            direction: rtl;
+            color: #1f3a1c;
+            background: var(--light-green);
+            padding: 12px;
+            border-radius: 24px;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+        .latin {
+            font-style: italic;
+            font-weight: 500;
+            margin: 8px 0;
+            color: #3a5c34;
+        }
+        .meaning {
+            font-size: 0.9rem;
+            color: #4a6741;
+            border-top: 1px dashed #d9e6d1;
+            padding-top: 10px;
+        }
+
+        /* Checklist Ibadah */
+        .checklist-group {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+        .check-item {
+            background: #fefef7;
+            border-radius: 60px;
+            padding: 0.8rem 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.1rem;
+            font-weight: 500;
+            border: 1px solid #e2e8db;
+            transition: 0.1s;
+        }
+        .check-item input {
+            width: 24px;
+            height: 24px;
+            accent-color: var(--gold);
+            cursor: pointer;
+        }
+        .check-item label {
+            cursor: pointer;
+            flex: 1;
+        }
+        .check-item i {
+            color: var(--gold);
+            width: 30px;
+            font-size: 1.3rem;
+        }
+
+        /* Hadits styling */
+        .hadith-card {
+            background: var(--gray-light);
+            padding: 1.2rem;
+            border-radius: 28px;
+            border-right: 4px solid var(--gold);
+        }
+        .hadith-text {
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 6px;
+        }
+        .hadith-trans {
+            color: #44613e;
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #132e18;
+            color: #dcecd5;
+            text-align: center;
+            padding: 1.4rem;
+            font-size: 0.85rem;
+            margin-top: 2rem;
+            border-top: 3px solid var(--gold);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+            .nav-links {
+                justify-content: center;
+                gap: 1.2rem;
+            }
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+            .hero-illustration i {
+                font-size: 6rem;
+            }
+            .container {
+                padding: 1.2rem;
+            }
+            section {
+                padding: 1.5rem;
+            }
+            .section-title {
+                font-size: 1.6rem;
+            }
+        }
+
+        /* smooth scroll */
+        html {
+            scroll-padding-top: 80px;
+        }
+        .hidden-section {
+            display: none;
+        }
+        .active-section {
+            display: block;
+        }
+        .btn-active {
+            border-bottom: 2px solid var(--gold);
+            color: var(--gold) !important;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <h2><i class="fas fa-mosque"></i> Keseharian<span>Muslim</span></h2>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#" data-nav="beranda" class="nav-link"><i class="fas fa-home"></i> Beranda</a></li>
+            <li><a href="#" data-nav="doa" class="nav-link"><i class="fas fa-hands-praying"></i> Doa</a></li>
+            <li><a href="#" data-nav="adab" class="nav-link"><i class="fas fa-user-friends"></i> Adab</a></li>
+            <li><a href="#" data-nav="ibadah" class="nav-link"><i class="fas fa-check-circle"></i> Ibadah</a></li>
+            <li><a href="#" data-nav="hadits" class="nav-link"><i class="fas fa-book-quran"></i> Hadits</a></li>
+            <li><a href="#" data-nav="tentang" class="nav-link"><i class="fas fa-info-circle"></i> Tentang</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <!-- BERANDA -->
+        <section id="beranda" class="hero fade-in active-section">
+            <div class="hero-text">
+                <h1>🌿 Keseharian Seorang Muslim</h1>
+                <p>Setiap langkah, nafas, dan aktivitas bisa menjadi ibadah jika dilakukan dengan niat yang benar. Mari jadikan hari-hari kita lebih bermakna dengan petunjuk Islam yang rahmatan lil 'alamin.</p>
+                <div class="nav-buttons">
+                    <a href="#" data-nav="doa" class="nav-btn"><i class="fas fa-praying-hands"></i> Doa Harian</a>
+                    <a href="#" data-nav="adab" class="nav-btn"><i class="fas fa-heart"></i> Pelajari Adab</a>
+                </div>
+            </div>
+            <div class="hero-illustration">
+                <i class="fas fa-mosque"></i>
+                <i class="fas fa-star-of-life" style="font-size: 2.5rem; margin-top: -20px; display: block; color: #d4af37;"></i>
+                <p style="font-weight:500; margin-top:10px;">✨ Ikhlas & Berkah ✨</p>
+            </div>
+        </section>
+
+        <!-- DOA SEHARI-HARI -->
+        <section id="doa" class="hidden-section fade-in">
+            <h2 class="section-title"><i class="fas fa-hands-clapping"></i> Doa Sehari-hari</h2>
+            <div class="cards-grid" id="doa-list"></div>
+        </section>
+
+        <!-- ADAB SEHARI-HARI -->
+        <section id="adab" class="hidden-section fade-in">
+            <h2 class="section-title"><i class="fas fa-child"></i> Adab Sehari-hari</h2>
+            <div class="cards-grid" id="adab-list"></div>
+        </section>
+
+        <!-- IBADAH HARIAN Checklist -->
+        <section id="ibadah" class="hidden-section fade-in">
+            <h2 class="section-title"><i class="fas fa-calendar-check"></i> Ibadah Harian Checklist</h2>
+            <div class="checklist-group" id="checklist-container"></div>
+            <div style="margin-top: 1.5rem; text-align: right;">
+                <button id="reset-checklist" class="btn-gold"><i class="fas fa-undo-alt"></i> Reset Centang</button>
+            </div>
+        </section>
+
+        <!-- HADITS PILIHAN -->
+        <section id="hadits" class="hidden-section fade-in">
+            <h2 class="section-title"><i class="fas fa-quote-right"></i> Hadits Pilihan</h2>
+            <div class="cards-grid" id="hadits-list"></div>
+        </section>
+
+        <!-- TENTANG WEBSITE -->
+        <section id="tentang" class="hidden-section fade-in">
+            <h2 class="section-title"><i class="fas fa-address-card"></i> Tentang Website</h2>
+            <div style="background: #f4faf1; border-radius: 32px; padding: 2rem; text-align: center;">
+                <i class="fas fa-laptop-code" style="font-size: 3rem; color: var(--gold); margin-bottom: 0.8rem; display: inline-block;"></i>
+                <h3 style="color: var(--primary-green);">Media Edukasi Islami untuk Pelajar</h3>
+                <p style="margin: 1rem 0; font-size: 1.05rem; max-width: 700px; margin-left: auto; margin-right: auto;">Website ini bertujuan membantu adik-adik pelajar memahami doa, adab, ibadah, dan hadits dalam keseharian Muslim. Dibuat dengan penuh semangat dakwah digital.</p>
+                <div style="background: white; padding: 1.2rem; border-radius: 40px; display: inline-block; margin-top: 8px; box-shadow: var(--shadow-sm);">
+                    <p><i class="fas fa-user-graduate"></i> <strong>Nama Pembuat:</strong> Malik</p>
+                    <p><i class="fas fa-school"></i> <strong>Kelas:</strong> X TKJ</p>
+                    <p><i class="fas fa-bullhorn"></i> <strong>Tujuan:</strong> Media edukasi islami bagi pelajar & inspirasi proyek TKJ</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Project Website Keseharian Seorang Muslim - TKJ Kelas X | Malik | © 2025 | <i class="fas fa-moon"></i> Berkah setiap hari</p>
+    </footer>
+
+    <script>
+        // Data konten
+        const doaData = [
+            { arab: "بِسْمِ اللَّهِ وَعَلَى بَرَكَةِ اللَّهِ", latin: "Bismillahi wa 'ala barakatillah", arti: "Dengan menyebut nama Allah dan atas berkah Allah (Doa sebelum makan)" },
+            { arab: "الْحَمْدُ لِلَّهِ الَّذِي أَطْعَمَنَا وَسَقَانَا وَجَعَلَنَا مُسْلِمِينَ", latin: "Alhamdulillahilladzi ath'amanaa wa saqaanaa wa ja'alanaa muslimiin", arti: "Segala puji bagi Allah yang memberi kami makan dan minum serta menjadikan kami muslim (Doa sesudah makan)" },
+            { arab: "بِاسْمِكَ اللَّهُمَّ أَحْيَا وَأَمُوتُ", latin: "Bismikallahumma ahyaa wa amuut", arti: "Dengan nama-Mu ya Allah aku hidup dan aku mati (Doa sebelum tidur)" },
+            { arab: "الْحَمْدُ لِلَّهِ الَّذِي أَحْيَانَا بَعْدَ مَا أَمَاتَنَا وَإِلَيْهِ النُّشُورُ", latin: "Alhamdulillahilladzi ahyaanaa ba'da maa amaatanaa wa ilayhin nusyuur", arti: "Segala puji bagi Allah yang menghidupkan kami setelah mematikan kami dan kepada-Nya kebangkitan (Doa bangun tidur)" }
+        ];
+
+        const adabData = [
+            { judul: "Adab kepada Orang Tua", desc: "Berbicara lembut, tidak membentak, mendahulukan keperluan mereka, mendoakan, dan meminta ridha. (QS Al-Isra: 23)" },
+            { judul: "Adab kepada Guru", desc: "Menghormati, mendengarkan dengan baik, bertutur kata sopan, serta mengamalkan ilmunya dengan ikhlas." },
+            { judul: "Adab Berteman", desc: "Saling nasihat, jujur, tidak menggunjing, tolong-menolong dalam kebaikan, dan menjaga ukhuwah Islamiyah." },
+            { judul: "Adab Makan & Minum", desc: "Mencuci tangan, membaca basmalah, menggunakan tangan kanan, tidak berlebihan, dan tidak mencela makanan." }
+        ];
+
+        const ibadahItems = [
+            { id: "shalat", label: "Shalat lima waktu (tepat waktu)", icon: "fas fa-mosque" },
+            { id: "quran", label: "Membaca Al-Qur'an minimal 1 juz / beberapa ayat", icon: "fas fa-book-quran" },
+            { id: "dzikir", label: "Berdzikir pagi & petang / setelah shalat", icon: "fas fa-pray" },
+            { id: "sedekah", label: "Bersedekah (walau sedikit)", icon: "fas fa-hand-holding-heart" },
+            { id: "ortu", label: "Membantu orang tua / pekerjaan rumah", icon: "fas fa-hands-helping" }
+        ];
+
+        const haditsData = [
+            { text: "عليكم بالصدق فإن الصدق يهدي إلى البر وإن البر يهدي إلى الجنة", arti: "Hendaklah kalian jujur, karena kejujuran membimbing pada kebaikan, dan kebaikan membimbing ke surga. (HR. Bukhari & Muslim)", judul: "Kejujuran" },
+            { text: "طلب العلم فريضة على كل مسلم", arti: "Menuntut ilmu itu wajib bagi setiap Muslim. (HR. Ibnu Majah)", judul: "Menuntut Ilmu" },
+            { text: "إن من أحبكم إلي وأقربكم مني مجلسا يوم القيامة أحاسنكم أخلاقا", arti: "Sesungguhnya orang yang paling aku cintai dan paling dekat tempat duduknya denganku pada hari kiamat adalah yang paling baik akhlaknya. (HR. Tirmidzi)", judul: "Akhlak Mulia" }
+        ];
+
+        // Render Doa
+        function renderDoa() {
+            const container = document.getElementById("doa-list");
+            if(!container) return;
+            container.innerHTML = doaData.map(d => `
+                <div class="card">
+                    <div class="arabic">${d.arab}</div>
+                    <div class="latin">📖 ${d.latin}</div>
+                    <div class="meaning">✨ Artinya: ${d.arti}</div>
+                </div>
+            `).join('');
+        }
+
+        // Render Adab
+        function renderAdab() {
+            const container = document.getElementById("adab-list");
+            if(!container) return;
+            container.innerHTML = adabData.map(ad => `
+                <div class="card">
+                    <h3><i class="fas fa-leaf" style="color:var(--gold)"></i> ${ad.judul}</h3>
+                    <p style="margin-top:10px;">📌 ${ad.desc}</p>
+                </div>
+            `).join('');
+        }
+
+        // Render Hadits
+        function renderHadits() {
+            const container = document.getElementById("hadits-list");
+            if(!container) return;
+            container.innerHTML = haditsData.map(h => `
+                <div class="hadith-card">
+                    <div style="font-size:1.4rem; font-weight:600; margin-bottom:6px;">📜 ${h.judul}</div>
+                    <div class="hadith-text" style="direction:rtl; font-family:'Amiri'; font-size:1.2rem;">${h.text}</div>
+                    <div class="hadith-trans"><i class="fas fa-language"></i> Artinya: ${h.arti}</div>
+                </div>
+            `).join('');
+        }
+
+        // Checklist interaksi dengan local storage (tidak pakai database, tetap simpan centangan user)
+        let checklistState = {
+            shalat: false,
+            quran: false,
+            dzikir: false,
+            sedekah: false,
+            ortu: false
+        };
+
+        function loadChecklistState() {
+            const saved = localStorage.getItem("muslimDailyChecklist");
+            if(saved) {
+                try {
+                    const parsed = JSON.parse(saved);
+                    checklistState = {...checklistState, ...parsed};
+                } catch(e) {}
+            }
+            renderChecklist();
+        }
+
+        function saveChecklistState() {
+            localStorage.setItem("muslimDailyChecklist", JSON.stringify(checklistState));
+        }
+
+        function renderChecklist() {
+            const container = document.getElementById("checklist-container");
+            if(!container) return;
+            container.innerHTML = ibadahItems.map(item => `
+                <div class="check-item">
+                    <i class="${item.icon}"></i>
+                    <input type="checkbox" id="chk_${item.id}" ${checklistState[item.id] ? 'checked' : ''}>
+                    <label for="chk_${item.id}">${item.label}</label>
+                </div>
+            `).join('');
+
+            // Attach event listeners after render
+            ibadahItems.forEach(item => {
+                const chk = document.getElementById(`chk_${item.id}`);
+                if(chk) {
+                    chk.addEventListener('change', (e) => {
+                        checklistState[item.id] = e.target.checked;
+                        saveChecklistState();
+                    });
+                }
+            });
+        }
+
+        function resetChecklist() {
+            for(let key in checklistState) {
+                checklistState[key] = false;
+            }
+            saveChecklistState();
+            renderChecklist();
+        }
+
+        // Navigasi antar halaman (section switching)
+        function initNavigation() {
+            const sections = {
+                beranda: document.getElementById("beranda"),
+                doa: document.getElementById("doa"),
+                adab: document.getElementById("adab"),
+                ibadah: document.getElementById("ibadah"),
+                hadits: document.getElementById("hadits"),
+                tentang: document.getElementById("tentang")
+            };
+
+            const navLinks = document.querySelectorAll(".nav-link");
+            function showSection(sectionId) {
+                // sembunyikan semua
+                Object.keys(sections).forEach(id => {
+                    if(sections[id]) sections[id].classList.add("hidden-section");
+                    if(sections[id]) sections[id].classList.remove("active-section");
+                });
+                const activeSec = sections[sectionId];
+                if(activeSec) {
+                    activeSec.classList.remove("hidden-section");
+                    activeSec.classList.add("active-section");
+                    // tambahkan animasi fade in ulang
+                    activeSec.classList.add("fade-in");
+                    setTimeout(() => activeSec.classList.remove("fade-in"), 700);
+                }
+                // update active class pada nav
+                navLinks.forEach(link => {
+                    const navVal = link.getAttribute("data-nav");
+                    if(navVal === sectionId) {
+                        link.classList.add("btn-active");
+                    } else {
+                        link.classList.remove("btn-active");
+                    }
+                });
+            }
+
+            navLinks.forEach(link => {
+                link.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    const target = link.getAttribute("data-nav");
+                    if(target && sections[target]) showSection(target);
+                });
+            });
+
+            // Tombol navigasi dari beranda
+            const allNavBtns = document.querySelectorAll(".nav-btn");
+            allNavBtns.forEach(btn => {
+                btn.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    const target = btn.getAttribute("data-nav");
+                    if(target && sections[target]) showSection(target);
+                });
+            });
+
+            // default tampilkan beranda
+            showSection("beranda");
+        }
+
+        // Animasi ekstra: memberi fade in pada semua elemen saat pertama kali load, 
+        // dan jika user pindah halaman sudah ada animasi via class.
+        window.addEventListener("DOMContentLoaded", () => {
+            renderDoa();
+            renderAdab();
+            renderHadits();
+            loadChecklistState();  // render checklist + load state
+            initNavigation();
+
+            const resetBtn = document.getElementById("reset-checklist");
+            if(resetBtn) resetBtn.addEventListener("click", resetChecklist);
+            
+            // Memastikan semua section sudah memiliki efek tambahan 
+            // menjaga eventListener localstorage selesai
+        });
+    </script>
+</body>
+</html>
